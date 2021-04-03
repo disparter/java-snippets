@@ -1,4 +1,4 @@
-package predicate;
+package com.disparter.predicate;
 
 public final class SimpleObject {
     public final String name;

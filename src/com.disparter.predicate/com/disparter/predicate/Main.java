@@ -1,4 +1,4 @@
-package predicate;
+package com.disparter.predicate;
 
 public class Main {
 

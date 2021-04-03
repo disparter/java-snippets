@@ -1,4 +1,4 @@
-package predicate;
+package com.disparter.predicate;
 
 import java.util.List;
 import java.util.function.Predicate;
