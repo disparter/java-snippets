@@ -1,3 +1,8 @@
 bin/
 mods/
 *.class
+*.iml
+.idea/
+out/
+.classpath
+.project
