@@ -1,37 +1,11 @@
-## Welcome to GitHub Pages
+## Snippets for Java
+This repository is part of my self-educate series, which begins in 2021.
 
-You can use the [editor on GitHub](https://github.com/disparter/java-snippets/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+### self_suficient_snippets
+All java files in this folder can be run without the need of anything else because they are sole files, some patterns are hard to be noted and these files are hard to be reused
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+#### src
+In this folder, modules are declared to be able to be reused. The classes are designed with simple purpose based on SOLID
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/disparter/java-snippets/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+#### Example
+The PredicateSnippet is a filter that prints only a type of object in the module version it uses a SimpleObject which is an object with a String object, have a unit test to guarantee for future modifications in the self_suficient example it uses Strings and has a main inside it, there is no guarantee of the test
