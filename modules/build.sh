@@ -1,1 +1,1 @@
-javac -d mods --module-source-path src/ $(find src -name "*.java")
+javac -d ./modules/mods --module-source-path ./modules/src/ $(find ./modules/src -name "*.java")
