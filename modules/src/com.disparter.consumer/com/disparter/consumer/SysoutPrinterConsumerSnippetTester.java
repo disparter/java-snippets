@@ -20,7 +20,8 @@ public class SysoutPrinterConsumerSnippetTester {
             System.out.println("SysoutPrinterConsumerSnippetTester::: TEST for print subjects have PASSED");
         }else {
         	restore();
-            System.out.println("SysoutPrinterConsumerSnippetTester::: TEST for print subjects have FAILED");
+            System.err.println("SysoutPrinterConsumerSnippetTester::: TEST for print subjects have FAILED");
+            System.exit(1);
         }       
  
     }

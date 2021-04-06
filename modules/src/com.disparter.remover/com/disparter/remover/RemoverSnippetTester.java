@@ -20,21 +20,32 @@ public class RemoverSnippetTester {
         List<SimpleObject> expectedSubjectsToFail = Stream.of(DISPOSABLE_OBJECT, DISPOSABLE_OBJECT2, DISPOSABLE_OBJECT3)
         		.collect(Collectors.toList());
 
+
+        var errors = 0;        
+
         if(testSubjects.removeIf(new RemoverSnippet(DISPOSABLE_OBJECT))) {
             System.out.println("RemoverSnippetTester::: TEST for removing disposable objects have PASSED");
+        }else{
+            errors++;
+            System.err.printf("RemoverSnippetTester::: TEST for removing disposable objects have FAILED. Result {}", testSubjects);
         }
         
         if(expectedSubjectsToPass.equals(testSubjects)){
             System.out.println("RemoverSnippetTester::: TEST for filtering positive have PASSED");
         }else {
-            System.out.println("RemoverSnippetTester::: TEST for filtering positive have FAILED");
+            errors++;
+            System.err.printf("RemoverSnippetTester::: TEST for filtering positive have FAILED. Expected {%s}. Result {%s}", expectedSubjectsToPass, testSubjects);
         }       
 
         if(!expectedSubjectsToFail.equals(testSubjects)){
             System.out.println("RemoverSnippetTester::: TEST for filtering negative have PASSED");
         }else {
-            System.out.println("RemoverSnippetTester::: TEST for filtering negative have FAILED");
-        }     
+            errors++;
+            System.err.printf("RemoverSnippetTester::: TEST for filtering negative have FAILED. Expected {%s}. Result {%s}", expectedSubjectsToFail, testSubjects);
+        } 
+
+        System.exit(errors);
+    
     }
 
 }

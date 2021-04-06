@@ -16,7 +16,7 @@ public class AlphaNOCaseComparatorSnippetTester {
     	if(EXPECTED.equals(result)) {
     		System.out.print("AlphaNOCaseComparatorSnippetTester::test_AllCases -> Success");
     	}else {
-    		System.out.print("AlphaNOCaseComparatorSnippetTester::test_AllCases -> Failure");
+    		System.err.print("AlphaNOCaseComparatorSnippetTester::test_AllCases -> Failure");
     	}
     	
 		System.out.printf("EXPECTED {%s} - RECEIVED {%s}", EXPECTED, result);

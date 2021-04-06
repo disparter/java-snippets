@@ -15,17 +15,21 @@ public class PredicateSnippetTester {
         List<SimpleObject> expectedSubjectsToFail = Arrays.asList(NON_PRINTABLE_OBJECT, NON_PRINTABLE_OBJECT);
         List<SimpleObject> result = new PredicateSnippet(testSubjects).filter(o -> PRINTABLE_OBJECT.equals(o)).collect();
 
+        var errors = 0;
         if(expectedSubjectsToPass.equals(result)){
             System.out.println("PredicateSnippetTester::: TEST for filtering positive have PASSED");
         }else {
-            System.out.println("PredicateSnippetTester::: TEST for filtering positive have FAILED");
+            errors++;
+            System.err.println("PredicateSnippetTester::: TEST for filtering positive have FAILED");
         }       
 
         if(!expectedSubjectsToFail.equals(result)){
             System.out.println("PredicateSnippetTester::: TEST for filtering negative have PASSED");
         }else {
-            System.out.println("PredicateSnippetTester::: TEST for filtering negative have FAILED");
-        }     
+            errors++;
+            System.err.println("PredicateSnippetTester::: TEST for filtering negative have FAILED");
+        }
+        System.exit(errors);
     }
 
 }
