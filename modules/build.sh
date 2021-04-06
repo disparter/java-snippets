@@ -1,4 +1,1 @@
-for dir in ./src/com.disparter.* 
-do
-    javac -d $(echo "mods/$dir" | cut -c 3- ) $(find $dir -name "*.java")	
-done
+javac -d mods --module-source-path src/ $(find src -name "*.java")
