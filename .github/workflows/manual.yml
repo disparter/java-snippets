@@ -18,9 +18,10 @@ jobs:
       - name: Test
         run: ./modules/test.sh
       - name: Tag
-        run: |
-          git tag "v$env:GitVersion_SemVer"
-          git push origin "v$env:GitVersion_SemVer"
+        uses: Klemensas/action-autotag@stable
+        with:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          tag_suffix: " (beta)"
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
