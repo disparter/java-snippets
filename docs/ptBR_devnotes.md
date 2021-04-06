@@ -1,10 +1,10 @@
 # Notas do desenvolvedor
 
 ### Rabiscando os primeiros Snippets
+```java
 import java.util.*;
 import java.util.function.*;
 
-```java
 public class PredicateSnippet {
     List<String> namedObjects = Arrays.asList("Thing", "Printable", "Stuff");
 
@@ -33,7 +33,8 @@ package predicate;
 ```java
 public class SimpleObject {
     public String name;
-}```
+}
+```
 
 Agora, refaremos PredicateSnippet da forma mais pura, com um propósito mais 'comercial', afinal você quer que sua classe seja reaproveitável em algum momento, talvez transforme-a em um módulo.
 Então a idéia é que a classe tenha apenas um único propósito.
@@ -55,7 +56,8 @@ public class PredicateSnippet {
             }
         }       
     }
-}```
+}
+```
 
 Mas agora não temos como observar se o comportamento desejado é o esperado, e por isso separamos a lógica de execução em um teste separado
 PredicateSnippet continua tendo muitas funções e isso é um problema
@@ -65,6 +67,7 @@ vamos separa em 2 classes
 uma que imprime pelo predicado
 e o predicado em si
 Vai parecer bizarro a principio
+
 ```java
 package predicate;
 
@@ -146,7 +149,8 @@ public class PredicateSnippetTester {
 
     }
 
-}```
+}
+```
 
 dessa maneira a classe testadora sabe como executar o teste esperado
 ela tem apenas um único trabalho, garantir que após uma Snippet trablhe ela retorne com a quantidade esperada de objetos para poder serem imprimíveis
@@ -162,7 +166,8 @@ public class Main {
         tester.predicateSnippetTestFiltering();
     }
     
-}```
+}
+```
 
 Essa classe executa o testador declarado e por fim você manualmente confere se o resultado foi esperado
 apenas para contra prova, vamos apriomorar e criar um teste falho
