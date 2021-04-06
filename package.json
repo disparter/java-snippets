@@ -1,0 +1,10 @@
+{
+    "name": "disparter-snippets",
+    "version": "1.0",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/disparter/java-snippets.git"
+    },
+    "author": "disparter",
+    "license": "MIT"
+}
