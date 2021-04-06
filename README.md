@@ -1,8 +1,9 @@
 # Snippets for Java
+[![Modules to Github Release](https://github.com/disparter/java-snippets/actions/workflows/manual.yml/badge.svg?branch=master)](https://github.com/disparter/java-snippets/actions/workflows/manual.yml)
 
+## Summary
 This repository is part of my self educate series, that begins in 2021.
 
-[![Modules to Github Release](https://github.com/disparter/java-snippets/actions/workflows/manual.yml/badge.svg?branch=master)](https://github.com/disparter/java-snippets/actions/workflows/manual.yml)
 
 ## self_suficient_snippets
 
