@@ -1,0 +1,25 @@
+name: Main
+
+on:
+  push:
+    branches:
+      - master
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build
+        run: ./modules/build.sh
+      - name: Package
+        run: ./modules/run.sh
+      - name: Test
+        run: ./modules/test.sh
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ./modules/out/*.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
