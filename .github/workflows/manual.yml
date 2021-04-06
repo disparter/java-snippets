@@ -1,4 +1,4 @@
-name: Main
+name: Modules to Github Release
 
 on:
   push:
@@ -17,9 +17,15 @@ jobs:
         run: ./modules/package.sh
       - name: Test
         run: ./modules/test.sh
+      - name: Tag
+        run: |
+          git tag "v$env:GitVersion_SemVer"
+          git push origin "v$env:GitVersion_SemVer"
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
+          name: v${{ env.GitVersion_SemVer }}
+          prerelease: ${{ env.GitVersion_PreReleaseLabel != '' }}
           files: ./modules/out/*.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
