@@ -1,4 +1,5 @@
-mkdir -p out
+mkdir -p ./modules/out
+cd modules
 for dir in ./src/*/
 do
   module=$(echo "$dir" | cut -c 7-)
