@@ -6,3 +6,4 @@ mods/
 out/
 .classpath
 .project
+*.jar
