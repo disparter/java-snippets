@@ -14,7 +14,7 @@ jobs:
       - name: Build
         run: ./modules/build.sh
       - name: Package
-        run: ./modules/run.sh
+        run: ./modules/package.sh
       - name: Test
         run: ./modules/test.sh
       - name: Release
