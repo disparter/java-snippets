@@ -1,7 +1,6 @@
 package com.disparter.function;
 
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class SquaredFunctionTester {
