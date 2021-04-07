@@ -9,5 +9,9 @@ public class SquaredFunction implements Function<Integer, Integer>{
 	public Integer apply(Integer number){
 		return number * number;
 	}
+
+	public static Integer sqrt(Integer number){
+		return number * number;
+	}
 	
 }
