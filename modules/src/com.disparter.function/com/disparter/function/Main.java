@@ -4,8 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
     	SquaredFunctionTester tester = new SquaredFunctionTester();
-    	tester.test_squareNumber();
-        tester.test_staticForm();
+    	tester.test_allTests();
     }
     
 }
