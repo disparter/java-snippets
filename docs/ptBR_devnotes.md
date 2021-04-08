@@ -208,3 +208,183 @@ public class PredicateSnippetTester {
 Dessa maneira apos executarmos a Main novamente, ela deve imprimir:
 "PredicateSnippetTester::: TEST for filtering positive have PASSED"
 "PredicateSnippetTester::: TEST for filtering negative have PASSED"
+
+### Operador Tenário
+```java
+package self_suficient_snippets;
+
+public class TenarySnippet {
+    public static void main(String... args){
+        if(args != null && args.length > 0 && args[0] != null && Boolean.parseBoolean(args[0])){
+           System.out.println("Verdadeiro");  
+        }else{
+           System.out.println("Falso");  
+        }
+      }
+}
+```
+```java
+public class ExemploDeTenario{
+  public static void main(String... args){
+    Objects.requiresNonNull(args[0]);
+    System.out.println(args[0]?"Verdadeiro":"Falso");
+  }
+}
+```
+
+https://github.com/disparter/java-snippets/blob/main/self_suficient_snippets/self_suficient_snippets/TenarySnippet.java
+```java
+package self_suficient_snippets;
+
+public class TenarySnippet {
+    public static void main(String... args){
+        if(checkArgs(args)){
+           System.out.println("Verdadeiro");  
+        }else{
+           System.out.println("Falso");  
+        }
+        
+        System.out.println(checkArgs(args)?"Verdadeiro":"Falso");
+      }
+    
+    public static Boolean checkArgs(String... args) {
+        return args.length > 0 && Boolean.parseBoolean(args[0]);
+    }
+}
+```
+
+Colocando tudo junto pra ficar mais claro e corrigindo os erros de sintaxe acima do rascunho
+No caso de args... para o Java nunca vem nulo então não precisa checar, isso é bom pq ai é só verificar se o array tem numero de argumentos maior que 0
+E dai seu programa está esperando que seja um true or false como argumento
+Se fosse rodar isso na linha de comando seria algo assim
+java TenarySnippet true
+
+### Programação Funcional
+Vamos dar uma olhada nesse artigo do Alura
+https://www.alura.com.br/artigos/programacao-funcional-o-que-e#:~:text=Programa%C3%A7%C3%A3o%20funcional%20%C3%A9%20o%20processo,Elliott%20que%20eu%20gosto%20muito.
+
+Antes de ler o artigo um rascunho breve:
+A programação tem uns paradigmas. Umas maneiras chaves de fazer as coisas
+A programação estrutural é aquela que vai do inicio pro fim do arquivo
+leitura de linha a linha, que nem em uma maquina de escrever
+ai tem a Programação Orientada a Objetos
+que é nosso foco maior
+Pois o java é completamente orientado
+E agora a programação Funcional é outro paradigma em si
+ela tem seus propios defeitos e beneficios e a ideia desse artigo é utiliza-la nos módulos como temos feito nos commits anteriores
+Esses módulos agora possuem o objetivo de analisar a programação funcional no java
+Por agora vamos criar um módulo que provê uma implementação para Function
+
+#### Function
+função Function no java é definida como a seguinte
+
+```java
+@FunctionalInterface
+public interface Function<T, R> {
+    /**
+     * Applies this function to the given argument.
+     *
+     * @param t the function argument
+     * @return the function result
+     */
+    R apply(T t);
+}
+```
+
+Existem mais dois default métodos mas não passaremos por eles pois não interessam pro propósito de implementação
+A Function determina um método apply que recebe um Tipo qualquer e Retorna um outro Tipo
+Podem ser diferentes ou iguais
+Uma simples implementação de Function poderia ser uma Potência Quadrática
+Por definição qualquer número elevado a 2 é um quadrado de si mesmo
+daí da simples implementação
+package com.disparter.function;
+
+```java
+import java.util.function.Function;
+import java.lang.Number;
+
+public class SquaredFunction implements Function<Integer, Integer>{
+
+    @Override
+    public Integer apply(Integer number){
+        return number * number;
+    }
+    
+}
+```
+O tipo R e T foram definidos como Integer
+Simples ne?
+Apenas pensando em Function já da pra fazer mta coisa
+Uma Snippet Simples poderia ser
+```java
+package self_suficient_snippets;
+
+import java.util.stream.IntStream;
+
+public class FunctionSnippet {
+        public void printFirstHunderedSquares() {
+            IntStream.rangeClosed(1, 100).mapToObj(n -> n*n).forEach(System.out::println);
+        }
+
+        public static void main(String[] args) {
+            new FunctionSnippet().printFirstHunderedSquares();
+        }
+}
+```
+basicamente imprime os 100 primeiros quadrados
+alem de aprimorar a legibilidade, existem alguns detalhes que são necessários para se fazer uma boa implementação
+
+#### BiFunction
+Assim como a interface Function
+a interface BiFunction é uma interface que recebe um parametro e retorna um outro tipo de objeto.
+Nesse caso a unica diferença é que a BiFunction usa dois parametros ao inves de 1
+O que torna muito interessante e forte candidato a operações basicas de matemática, como por exemplo. Somar, Dividir
+a entrada sempre são 2 numeros e a saída sempre 1 numero
+O módulo Calculator provê 4 implementações básicas para serem usadas
+https://github.com/disparter/java-snippets/tree/master/modules/src/com.disparter.calculator
+Além do UnaryOperator e do Binary Operator, irei fazer mais algums módulos com Interfaces funcionais próprias antes de encerrar esse assunto
+
+#### BinaryOperator
+
+Continuando as interfaces. A UnaryOperator e a BinaryOperator são lindas
+Quando iniciamos a calculadora, ela usava Function<T, R> que apesar de poder ter dois tipos diferentes nós usamos apenas um tipo
+mas essa característica é da UnaryOperator, pois afinal é apenas uma extensão de Function
+Que permite apenas um mesmo tipo, são elas mais usadas nas Streams pois Possuem o mesmo tipo
+Faremos um refactor em Calculator
+Repare no Diff.
+BinaryOperator utiliza apenas um argumento o que torna mais prática a escrita para esse caso.
+
+```diff
+diff --git a/modules/src/com.disparter.calculator/com/disparter/calculator/Adder.java b/modules/src/com.disparter.calculator/com/disparter/calculator/Adder.java
+index 9d25c97..fe23315 100644
+--- a/modules/src/com.disparter.calculator/com/disparter/calculator/Adder.java
++++ b/modules/src/com.disparter.calculator/com/disparter/calculator/Adder.java
+@@ -1,8 +1,8 @@
+ package com.disparter.calculator;
+
+-import java.util.function.BiFunction;
++import java.util.function.BinaryOperator;
+
+-public class Adder implements BiFunction<Integer, Integer, Integer>{
++public class Adder implements BinaryOperator<Integer>{
+```
+Para demostrar a melhoria. Criei umas streams básicas.
+Por exemplo, você consegue fazer fatorial com 1 linha de código sem nem precisar implementar nada, já basico da linguagem. 
+A minha implementação poderia ser substituida por uma lambda expression facilmente como demonstrado na FunctionSnippet
+```java
+public void demo_streamOperations() {
+    int simpleSomatory = IntStream.rangeClosed(1, 10).reduce(Adder::sum).getAsInt();
+        System.out.printf("Simple Sommatory Demo: %d\n", simpleSomatory);
+        
+        int simpleNegativeSomatory = IntStream.rangeClosed(1, 10).reduce(Reducer::diff).getAsInt();
+        System.out.printf("Simple Negative Somatory Demo: %d\n", simpleNegativeSomatory);
+        
+        int simpleFactorial = IntStream.rangeClosed(1, 10).reduce(Multiplier::x).getAsInt();
+        System.out.printf("Simple Factorial Demo: %d\n", simpleFactorial);
+        
+        int simpleFractionProgression = IntStream.rangeClosed(1, 10).reduce(Divider::divide).getAsInt();
+        System.out.printf("Simple Fraction Demo: %d\n", simpleFractionProgression);
+}
+```
+Link do Diff e da atualização completa.
+https://github.com/disparter/java-snippets/pull/10/files
