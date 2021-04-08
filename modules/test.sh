@@ -1,9 +1,10 @@
+version=$(grep version package.json | awk -F \" '{print $4}')
 cd modules
 errors=()
 for dir in ./src/*/
 do
   module=$(echo "$dir" | cut -c 7-)
-  cmd="java -jar out/${module%?}@1.0.jar"
+  cmd="java -jar out/${module%?}@$version.jar"
   echo $cmd 
   $cmd
   status=$?
