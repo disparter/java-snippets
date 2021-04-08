@@ -1,6 +1,22 @@
 package com.disparter.calculator;
 
+import java.util.stream.IntStream;
+
 public class CalculatorTester {
+	
+	public void demo_streamOperations() {
+		int simpleSomatory = IntStream.rangeClosed(1, 10).reduce(Adder::sum).getAsInt();
+    	System.out.printf("Simple Sommatory Demo: %d\n", simpleSomatory);
+    	
+    	int simpleNegativeSomatory = IntStream.rangeClosed(1, 10).reduce(Reducer::diff).getAsInt();
+    	System.out.printf("Simple Negative Somatory Demo: %d\n", simpleNegativeSomatory);
+    	
+    	int simpleFactorial = IntStream.rangeClosed(1, 10).reduce(Multiplier::x).getAsInt();
+    	System.out.printf("Simple Factorial Demo: %d\n", simpleFactorial);
+    	
+    	int simpleFractionProgression = IntStream.rangeClosed(1, 10).reduce(Divider::divide).getAsInt();
+    	System.out.printf("Simple Fraction Demo: %d\n", simpleFractionProgression);
+    }
 
 	public void test_basicOperations(){
 		final Integer testSubject = 1;

@@ -1,4 +1,4 @@
-import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 
 import com.disparter.calculator.Adder;
 import com.disparter.calculator.Divider;
@@ -7,6 +7,6 @@ import com.disparter.calculator.Reducer;
 
 module com.disparter.calculator {
 	requires java.base;
-	provides BiFunction with Adder, Multiplier, Reducer, Divider;
+	provides BinaryOperator with Adder, Multiplier, Reducer, Divider;
 
 }

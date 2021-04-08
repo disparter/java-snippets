@@ -1,8 +1,8 @@
 package com.disparter.calculator;
 
-import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 
-public class Divider implements  BiFunction<Integer, Integer, Integer>{
+public class Divider implements BinaryOperator<Integer>{
 
     @Override
     public Integer apply(Integer a, Integer b){
