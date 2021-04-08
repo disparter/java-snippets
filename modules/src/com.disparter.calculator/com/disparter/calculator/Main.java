@@ -4,8 +4,8 @@ public class Main {
 
     public static void main(String[] args) {
         CalculatorTester tester = new CalculatorTester();
-        tester.test_basicOperations();
-        
+        tester.demo_streamOperations();
+        tester.test_basicOperations();     
     }
     
 }
