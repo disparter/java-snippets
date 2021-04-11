@@ -1,5 +1,7 @@
 package com.disparter.calculator;
 
+import java.util.Arrays;
+import java.util.Optional;
 import java.util.stream.IntStream;
 
 public class CalculatorTester {
@@ -14,8 +16,8 @@ public class CalculatorTester {
     	int simpleFactorial = IntStream.rangeClosed(1, 10).reduce(Multiplier::x).getAsInt();
     	System.out.printf("Simple Factorial Demo: %d\n", simpleFactorial);
     	
-    	int simpleFractionProgression = IntStream.rangeClosed(1, 10).reduce(Divider::divide).getAsInt();
-    	System.out.printf("Simple Fraction Demo: %d\n", simpleFractionProgression);
+    	Optional<Integer> simpleFractionProgression = Arrays.asList(100, 10, 2).stream().reduce(Divider::divide);
+    	System.out.printf("Simple Fraction Demo: %d\n", simpleFractionProgression.orElseGet(() -> 0));
     }
 
 	public void test_basicOperations(){
