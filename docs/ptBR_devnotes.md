@@ -388,3 +388,24 @@ public void demo_streamOperations() {
 ```
 Link do Diff e da atualização completa.
 https://github.com/disparter/java-snippets/pull/10/files
+
+#### SpeedTestSnippet
+
+https://link.medium.com/I5MnDiTOmfb
+
+Seguindo esse brilhante artigo, decidi fazer uma comparação com o Java também.
+Criei a SpeedTestSnippet e o SpeedTestCliSnippet
+O propósito dessas snippets é para testar velocidade, brincando com Stream, Stream Paralelo e um diretão.
+
+Algumas operações não são muito interessantes com paralelismo, pois acaba tendo dificuldade em paralelizar ou então, forçar a propria paralelização pode ser menos eficiente do que o que já tem na JVM.
+
+```bash
+SIMPLE FOR SPEED TEST with Length[1000000], took 3ms
+STREAM CONSUMER SPEED TEST with Length[1000000], took 7ms
+PARALLEL STREAM CONSUMER SPEED TEST with Length[1000000], took 6ms
+```
+Esse foi o resultado, experimente fazer algumas modificações. Por exemplo, comentar a invocação para os primeiros métodos de speed antes de invocar o paralelo.
+
+
+
+
