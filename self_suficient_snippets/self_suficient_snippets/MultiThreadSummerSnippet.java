@@ -38,17 +38,25 @@ public class MultiThreadSummerSnippet {
     }
  
     public static void main(String[] args) {
+        
+        final var streamStartTime = System.currentTimeMillis();
+        final long streamSum = LongStream.rangeClosed(1, LIMIT).sum();
+        final var streamElapsedTime = System.currentTimeMillis() - streamStartTime;
+        System.out.printf("Stream Sum from %d to %d is %d, time passed [%d]\n", 1, LIMIT, streamSum, streamElapsedTime);
+
+        
+        final var pStreamStartTime = System.currentTimeMillis();
+        final long pStreamSum = LongStream.rangeClosed(1, LIMIT).parallel().sum();
+        final var pStreamElapsedTime = System.currentTimeMillis() - pStreamStartTime;
+        System.out.printf("Parallel Stream Sum from %d to %d is %d, time passed [%d]\n", 1, LIMIT, pStreamSum, pStreamElapsedTime);
+
         ForkJoinPool pool = new ForkJoinPool(THREADS);
         
         final var threadStartTime = System.currentTimeMillis();
         final long threadSum = pool.invoke(new SummerTask(1, LIMIT));
         final var threadElapsedTime = System.currentTimeMillis() - threadStartTime;
         System.out.printf("Parallel Thread sum from %d to %d is %d, time passed [%d]\n", 1, LIMIT, threadSum, threadElapsedTime);
+       
         
-        final var streamStartTime = System.currentTimeMillis();
-        final long streamSum = LongStream.rangeClosed(1, LIMIT).sum();
-        final var streamElapsedTime = System.currentTimeMillis() - streamStartTime;
-        
-        System.out.printf("Stream Sum from %d to %d is %d, time passed [%d]\n", 1, LIMIT, streamSum, streamElapsedTime);
     }
 }
