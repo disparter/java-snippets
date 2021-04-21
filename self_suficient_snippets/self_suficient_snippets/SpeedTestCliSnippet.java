@@ -2,7 +2,6 @@ package self_suficient_snippets;
 
 import java.util.Random;
 import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.ForkJoinTask;
 import java.util.function.IntConsumer;
 import java.util.stream.IntStream;
 
@@ -73,7 +72,7 @@ public class SpeedTestCliSnippet {
 		ForkJoinPool customThreadPool = null;
 		try {
 			customThreadPool = new ForkJoinPool(parallelism);
-			ForkJoinTask task = customThreadPool.submit(() -> IntStream
+			var task = customThreadPool.submit(() -> IntStream
 			    .rangeClosed(0, length-1)
 				.parallel().forEach(allocateDoubles));
 
