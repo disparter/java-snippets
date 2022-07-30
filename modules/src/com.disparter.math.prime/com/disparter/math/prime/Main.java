@@ -10,6 +10,9 @@ public class Main {
         PrimeDivisorsTester tester2 = new PrimeDivisorsTester();
         errors += tester2.test_allTests();
 
+        PrimeCheckerWithDivisorsListTester tester3 = new PrimeCheckerWithDivisorsListTester();
+        errors += tester3.test_allTests();
+
         System.exit(errors);
     }
     
