@@ -34,7 +34,7 @@ public class PrimeDivisorsTester {
     public void test_whenNumberIsNotPrime() {
         //Given
         final Integer testSubject = 4;
-        final List<Integer> EXPECTED = List.of(1,2,4);
+        final List<Integer> EXPECTED = List.of(1,2,3);
 
         //When
         List<Integer> result = new PrimeDivisors().apply(testSubject);
