@@ -1,0 +1,19 @@
+name: Check for Erros (CI)
+
+on:
+  pull_request:
+    branches:
+      - master
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build
+        run: ./modules/build.sh
+      - name: Package
+        run: ./modules/package.sh
+      - name: Test
+        run: ./modules/test.sh
