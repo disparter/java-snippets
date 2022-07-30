@@ -4,10 +4,10 @@ public class PrimeCheckerTester {
     
 	int errors = 0;
 	
-	public void test_allTests() {
+	public Integer test_allTests() {
         test_whenNumberIsPrime();
         test_whenNumberIsNotPrime();
-        System.exit(errors);
+        return errors;
 	}
 	
 	public void test_whenNumberIsPrime() {
