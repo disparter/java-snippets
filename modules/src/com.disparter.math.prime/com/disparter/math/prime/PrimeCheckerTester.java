@@ -6,7 +6,8 @@ public class PrimeCheckerTester {
 	
 	public void test_allTests() {
         test_whenNumberIsPrime();
-		System.exit(errors);
+        test_whenNumberIsNotPrime();
+        System.exit(errors);
 	}
 	
 	public void test_whenNumberIsPrime() {
@@ -23,9 +24,24 @@ public class PrimeCheckerTester {
                 testSubject, EXPECTED, result);
             
             errors++;
-        }       
- 
-		
+        }
 	}
+
+    public void test_whenNumberIsNotPrime() {
+        final Boolean EXPECTED = false;
+        final Integer testSubject = 4;
+
+        Boolean result = new PrimeChecker().apply(testSubject);
+
+        if(EXPECTED == result){
+            System.out.printf("PrimeCheckerTester::: TEST that check if number {%d} is prime PASSED, expected {%b}, result {%b}\n",
+                    testSubject, EXPECTED, result);
+        }else {
+            System.out.printf("PrimeCheckerTester::: TEST that check if number {%d} is prime FAILED, expected {%b}, result {%b}\n",
+                    testSubject, EXPECTED, result);
+
+            errors++;
+        }
+    }
 
 }
